@@ -1,12 +1,9 @@
 import express from "express";
 import userRoutes from "./routes/userRoutes.js";
 import keyRoutes from "./routes/keyRoutes.js";
+import pool from "./config/db.js";
 const app = express();
 const port = 5000;
-
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
 
 app.use("/users", userRoutes);
 app.use("/generate-key", keyRoutes);
