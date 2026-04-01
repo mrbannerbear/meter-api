@@ -5,7 +5,7 @@ const router = express.Router();
 
 const fakeDb = [];
 
-router.get("/", (req, res) => {
+router.post("/", (req, res) => {
   const generatedKey = generateKey();
   fakeDb.push(generatedKey.hash)
   res.json({ key: generatedKey.randomKey });
