@@ -1,14 +1,9 @@
 import express from "express";
-import { generateKey } from "../helpers/generateKey.js";
+import { createApiKeyHandler } from "../controllers/keyController.js";
 
 const router = express.Router();
 
-const fakeDb = [];
-
-router.post("/", (req, res) => {
-  const generatedKey = generateKey();
-  fakeDb.push(generatedKey.hash)
-  res.json({ key: generatedKey.randomKey });
-});
+// POST /generate-key
+router.post("/", createApiKeyHandler);
 
 export default router;
