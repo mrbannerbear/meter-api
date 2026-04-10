@@ -5,6 +5,8 @@ import pool from "./config/db.js";
 const app = express();
 const port = 5000;
 
+app.use(express.json()); 
+
 app.use("/users", userRoutes);
 app.use("/generate-key", keyRoutes);
 

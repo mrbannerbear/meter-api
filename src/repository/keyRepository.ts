@@ -12,3 +12,11 @@ export const createApiKey = async (data: unknown) => {
 
   return result.rows[0];
 };
+
+export const getApiKeyByPublicPart = async (prefix: string, public_part: string) => {
+  const result = await pool.query(
+    `SELECT * FROM public.api_keys WHERE prefix = $1 AND public_part = $2;`,
+    [prefix, public_part],
+  );
+  return result.rows[0];
+};

@@ -73,6 +73,13 @@ export const UsageLogSchema = z.object({
   created_at: z.date().default(() => new Date()),
 });
 
+// --- Chat Schema ---
+export const ChatSchema = z.object({
+  id: z.uuid(),
+  user_id: z.uuid().nullable().optional(),
+  message: z.string().max(1000),
+  created_at: z.date().default(() => new Date()),
+});
 
 // --- Types ---
 export type User = z.infer<typeof UserSchema>;
@@ -82,3 +89,4 @@ export type ApiKeyInsert = z.infer<typeof ApiKeyInsertSchema>;
 export type Payment = z.infer<typeof PaymentSchema>;
 export type Plan = z.infer<typeof PlanSchema>;
 export type UsageLog = z.infer<typeof UsageLogSchema>;
+export type Chat = z.infer<typeof ChatSchema>;

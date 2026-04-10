@@ -8,7 +8,12 @@ export const generateKey = (): { prefix: string; public_part: string; key_hash: 
   return { prefix, public_part: publicPart, key_hash: hashedPrivatePart };
 };
 
-const hashKey = (key: string) => {
-  const hash = crypto.createHash("sha256").update(key).digest("hex");
+export const verifyKey = (privateKeyPart: string, hash: string) => {
+  const keyHash = hashKey(privateKeyPart);
+  return keyHash === hash;
+}
+
+const hashKey = (privateKeyPart: string) => {
+  const hash = crypto.createHash("sha256").update(privateKeyPart).digest("hex");
   return hash;
 };
